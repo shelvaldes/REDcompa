@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace= "~{@{/layout/default} :: head}">
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+<!-- Menú lateral -->
+<div class="sidenav" th:replace= "~{@{/layout/default} :: header}">
+
+</div>
+
+<!-- Contenido -->
+<div class="content">
+    <h2>Bienvenido</h2>
+    <p>Selecciona una opción del menú lateral.</p>
+</div>
+
+</body>
+</html>

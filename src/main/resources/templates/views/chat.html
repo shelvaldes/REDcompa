@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace= "~{@{/layout/default} :: head}">
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+<!-- Menú lateral -->
+<div class="sidenav" th:replace= "~{@{/layout/default} :: header}">
+
+</div>
+
+<!-- Contenido -->
+<div class="content">
+    <h2>Chat</h2>
+    <div class="chat-container">
+        <div class="chat-history">
+            <!-- Aquí se mostrará el historial del chat -->
+            <div class="message incoming-message">
+                <div class="message-content">Hola, ¿en qué puedo ayudarte?</div>
+                <div class="message-time">10:00 AM</div>
+            </div>
+            <div class="message outgoing-message">
+                <div class="message-content">Hola, quisiera hablar sobre.</div>
+                <div class="message-time">10:01 AM</div>
+            </div>
+            <!-- Puedes agregar más mensajes según el historial del chat -->
+        </div>
+        <form id="message-form">
+        <input type="text" id="message-input" placeholder="Type your message here...">
+        <button type="submit">Send</button>
+    </form>
+
+    </div>
+    
+  <!--  <script src="scripts.js"></script>-->
+</div>
+
+
+</body>
+
+
+    <script>
+        $(document).ready(function() {
+            $('#message-form').submit(function(event) {
+                event.preventDefault();
+                var chatId = 1; // ID del chat, asegúrate de ajustarlo según tus necesidades
+                var messageContent = $('#message-input').val();
+                console.log('Entro');
+              /*  $.ajax({
+                    type: 'POST',
+                    url: '/chat/send-message',
+                    data: {
+                        chatId: chatId,
+                        messageContent: messageContent
+                    },
+                    success: function(response) {
+                        console.log(response); 
+                    },
+                    error: function(error) {
+                        console.error('Error sending message:', error);
+                    }
+                });*/
+            });
+        });
+    </script>
+</html>
