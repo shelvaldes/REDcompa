@@ -16,48 +16,59 @@
     <div class="container">
         <h1>Como te has sentido..</h1>
          <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <!-- Card -->
-                <div class="card">
-                    <!-- Publicidad-->
-                    <img src="https://www.eluniversal.com.mx/resizer/mtAfCjT-LB5ze4cCq6Yj6vTFDXU=/1100x666/cloudfront-us-east-1.images.arcpublishing.com/eluniversal/XSFDXWPLWFEE3IEWVHN2NP3K7U.jpg" class="card-img-top" alt="Imagen de ejemplo" width="200" height="50">
-              
-                </div>
-            </div>
-        </div>
-    </div>
-
-        <div class="card-deck">
+       		<div class="row">
+            	<p class="card-text placeholder-glow">
+     				<span class="placeholder col-12"></span>
+      				<span class="placeholder col-4"></span>
+      				<span >Publicidad</span>
+      				<span class="placeholder col-4"></span>
+      				<span class="placeholder col-12"></span>
+    			</p>
+        	</div>
+    	</div>
+		<hr>
         
-            <div th:each="status : ${statuses}" class="card">
-             <div class="card-header">
-  <h5 class="card-title" th:text="${status.user.name}"></h5>
-  </div>
+        <div >
+        
+            <div th:each="status : ${statuses}" class="card" >
+             	<div class="card-header">
+			  		<h4 class="card-title" th:text="${status.user.name}"></h4>
+  				</div>
             
                 <div class="card-body">
                     
-                    <p class="card-text"><span th:text="${status.content}"></span></p>
+                    <h4 class="card-text"><span th:text="${status.content}"></span></h4>
                     <p class="card-text">Fecha de creación: <span th:text="${status.creationDate}"></span></p>
                 </div>
                 
-                <ul>
-        			<li th:each="response : ${status.responses}">
-        				<black  th:text="${response.user.name}+': '"></black><div  th:text="${response.content}"></div><span th:text="${response.creationDate}+${status.id}"></span>
+                <ul class="list-group secondary">
+        			<li  class="list-group-item" th:each="response : ${status.responses}">
+        				<h6  th:text="${response.user.name}+': '"></h6>
+        				<h4  th:text="${response.content}"></h4>
+        				<span th:text="${response.creationDate}+${status.id}"></span>
         			</li>
     			</ul>
     			
-    			<div id="dataContainer" th:fragment="dataFragment"></div>
     			<form th:id = "'responseForm'+${status.id}" th:object="${response}">
-    			<input type = "hidden" th:id="'responseStatus'+${status.id}" th:field = "${response.status}" th:value = "${status}">
-    			<input type = "text" id="responseContent+${status.id}"  th:field = "${response.content}">
+    				<div class="input-group mb-3">
+    					<input type = "hidden" th:id="'responseStatus'+${status.id}" th:field = "${response.status}" th:value = "${status}">
+    					<input type = "text" class="form-control" id="responseContent+${status.id}"  th:field = "${response.content}">
+  						
+   					<button id="dataUpdate" class="btn-outline-secondary" onclick = "addResponse()" >Comentar</button>
+					</div>
+    			
+    			<div id="dataContainer" th:fragment="dataFragment"></div>
+    			
+    			
 			<!--	<input type="hidden" id="responseCreationDate+${status.id}" th:field="${response.creationDate}" th:value="2024/04/14">-->    			
     			</form>
-    			 <button id="dataUpdate" onclick = "addResponse()" >Comentar</button>
+    			
+    			 
             </div>
-           
             
         </div>
+        <br>
+    			 <br>
     </div>
 </div>
 <script>
